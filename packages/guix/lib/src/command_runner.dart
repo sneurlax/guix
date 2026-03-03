@@ -1,6 +1,8 @@
 import 'package:args/command_runner.dart';
 import 'package:guix/src/commands/init_command.dart';
 import 'package:guix/src/commands/setup_command.dart';
+import 'package:guix/src/commands/shell_command.dart';
+import 'package:guix/src/commands/build_command.dart';
 
 class GuixCommandRunner extends CommandRunner<int> {
   GuixCommandRunner()
@@ -16,6 +18,8 @@ class GuixCommandRunner extends CommandRunner<int> {
 
     addCommand(InitCommand());
     addCommand(SetupCommand());
+    addCommand(ShellCommand());
+    addCommand(BuildCommand());
   }
 
   @override
