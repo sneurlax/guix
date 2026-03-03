@@ -26,7 +26,7 @@ fi
 
 # Ensure TLS certificates are available (Guix pure shell doesn't set these).
 if [ -z "${SSL_CERT_DIR:-}" ] && [ -z "${SSL_CERT_FILE:-}" ]; then
-    for d in "$GUIX_ENVIRONMENT" "$GUIX_PROFILE" /run/current-system/profile; do
+    for d in "${GUIX_ENVIRONMENT:-}" "${GUIX_PROFILE:-}" /run/current-system/profile; do
         cert="${d:-}/etc/ssl/certs"
         if [ -d "$cert" ]; then
             export SSL_CERT_DIR="$cert"
