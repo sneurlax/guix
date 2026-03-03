@@ -1,32 +1,40 @@
-# poc-host-app
+# guix
+Reproducible Flutter builds using GNU Guix.
 
-Proof-of-concept demonstrating how a Flutter project consumes
-[guix-flutter-scripts](guix/README.md).
-
-## Setup
-
+## Option 1: Dart CLI (pub.dev)
 ```sh
-make guix-setup
+dart pub global activate guix
 ```
 
-## Develop
-
+Then in your Flutter project:
 ```sh
-make guix-shell
+guix_dart init        # Creates config files
+guix_dart setup       # Fetches Flutter SDK
+guix_dart shell linux # Enters reproducible dev shell
+guix_dart build linux # Reproducible build
+guix_dart doctor      # Checks prerequisites
 ```
 
-## Build
-
+## Option 2: Git subtree (no dependencies)
 ```sh
-make guix-build
+git subtree add --prefix=guix <repo-url> main --squash
 ```
 
-## How this was set up
-
-```sh
-flutter create poc_host_app
-cd poc_host_app
-git subtree add --prefix=guix <guix-flutter-scripts-url> main --squash
-cat 'GUIX_FLUTTER_DIR ?= guix\ninclude $(GUIX_FLUTTER_DIR)/Makefile.inc' > Makefile
-./guix/bootstrap.sh
+Add to your Makefile:
+```makefile
+GUIX_FLUTTER_DIR ?= guix
+include $(GUIX_FLUTTER_DIR)/Makefile.inc
 ```
+
+Then:
+```sh
+make guix-setup           # pins channels, fetches Flutter SDK
+make guix-shell           # enters dev shell
+make guix-build           # reproducible build
+```
+
+No Dart dependency, just Bash and Guix. S ee [guix/README.md](guix/README.md) 
+for the full script reference.
+
+# Is it any good?
+Yes.
