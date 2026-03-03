@@ -132,8 +132,87 @@ ANDROID_NDK_VERSION="23.1.7779620"
 | `guix-shell-android-pinned` | Interactive Android dev shell (fully reproducible) |
 | `guix-build-android` | CI-friendly Android APK build (fully pinned) |
 | `guix-build-android-fast` | Android build with latest Guix |
+| `guix-sync` | Re-generate .env files from guix.yaml (requires guix_dart) |
 | `guix-pin` | Re-pin Guix channels to current versions |
 | `guix-clean` | Remove fetched SDKs and build artifacts |
+
+## Choose your integration
+
+guix-flutter-scripts works at three levels. Pick the one that fits your team:
+
+### Tier 1: pub.dev CLI only
+
+No git subtree required. Install once and use `guix_dart` commands directly.
+
+```sh
+dart pub global activate guix
+guix_dart init linux android
+guix_dart setup
+guix_dart shell linux
+guix_dart build android
+```
+
+Configuration lives in `guix.yaml`. Use `guix_dart sync` any time you edit the
+YAML to regenerate the `.env` files that the standalone scripts read.
+
+### Tier 2: git subtree + CLI (recommended for teams)
+
+Add the scripts via git subtree for version-controlled scripts, and let
+`guix_dart` handle setup and sync. `Makefile.inc` automatically delegates to
+`guix_dart` when it is on `PATH`.
+
+```sh
+# Add subtree once
+git subtree add --prefix=guix \
+    https://github.com/user/guix-flutter-scripts.git main --squash
+
+# Bootstrap (copies config templates, pins channels, fetches Flutter)
+bash guix/bootstrap.sh
+
+# Install CLI (optional but recommended)
+dart pub global activate guix
+guix_dart init --from-existing   # import existing .env into guix.yaml
+
+# Daily use: Makefile delegates to guix_dart when available
+make guix-shell
+make guix-build-android
+
+# Keep .env files in sync after editing guix.yaml
+make guix-sync      # calls guix_dart sync
+```
+
+### Tier 3: git subtree only (no Dart required)
+
+Pure shell workflow. No Dart or pub needed on CI or developer machines.
+Edit `.env` files directly; `Makefile.inc` calls the scripts without delegation.
+
+```sh
+# Add subtree
+git subtree add --prefix=guix \
+    https://github.com/user/guix-flutter-scripts.git main --squash
+
+# Bootstrap
+bash guix/bootstrap.sh
+
+# Edit config files directly
+$EDITOR flutter_version.env
+$EDITOR android_sdk_version.env
+
+# Use Make targets
+make guix-setup
+make guix-shell
+make guix-build-android
+```
+
+### Moving between tiers
+
+| From | To | Command |
+|------|----|---------|
+| Tier 3 (scripts) | Tier 1/2 (CLI) | `guix_dart init --from-existing` |
+| Tier 1/2 (CLI) | Tier 3 (scripts) | `guix_dart eject` (writes scripts + `.env` files) |
+| Any tier | Keep `.env` current after YAML edit | `guix_dart sync` or `make guix-sync` |
+
+---
 
 ## Updating
 
