@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0
+## 0.0.1
 
 - Initial release.
 - `init` command: generate `guix.yaml`, platform manifests, and pin channels.

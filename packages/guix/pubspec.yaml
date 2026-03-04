@@ -1,6 +1,6 @@
 name: guix
 description: Reproducible Dart and Flutter builds with GNU Guix.
-version: 0.1.0
+version: 0.0.1
 repository: https://github.com/ManyMath/guix
 
 environment:
