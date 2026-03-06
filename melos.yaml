@@ -1,0 +1,19 @@
+name: guix_workspace
+repository: https://github.com/ManyMath/guix
+
+packages:
+  - packages/*
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  analyze:
+    exec: dart analyze .
+    description: Run dart analyze in all packages.
+  test:
+    exec: dart test
+    description: Run tests in all packages.
+    packageFilters:
+      dirExists: test
