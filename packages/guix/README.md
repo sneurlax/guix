@@ -15,6 +15,28 @@ guix_dart shell linux # Enter reproducible dev shell.
 guix_dart build linux # Build (pinned, CI-safe).
 ```
 
+## Repository example
+The repo includes a full example app at
+[`../../example`](../../example).
+
+From that directory:
+
+```sh
+dart run ../packages/guix/bin/guix_dart.dart setup linux
+dart run ../packages/guix/bin/guix_dart.dart build linux
+./tool/hash_linux_bundle.sh --check
+```
+
+The normalized Linux release bundle should hash to:
+
+```text
+6ff79e75e7fdb074f73bfa7c13095db2b6c4b92bdd25b0928d7303b618594d0a
+```
+
+This is the quickest way to see a complete `guix.yaml` and pinned
+`guix/channels.scm` before adapting the workflow to your own project. That
+example README also covers the subtree and standalone-script paths.
+
 ## Commands
 | Command | Description |
 |---------|-------------|
