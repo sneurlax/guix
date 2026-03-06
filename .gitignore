@@ -16,6 +16,12 @@ build/
 # Fetched SDKs
 .flutter-sdk/
 .android-sdk/
+.flutter-sdk
+.android-sdk
+**/.flutter-sdk/
+**/.android-sdk/
+**/.flutter-sdk
+**/.android-sdk
 
 # Guix profiles
 .guix-profile

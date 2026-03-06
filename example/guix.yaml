@@ -1,0 +1,32 @@
+# guix.yaml: reproducible build configuration
+# Docs: https://pub.dev/packages/guix
+
+project:
+  name: guix_example
+
+flutter:
+  version: "3.24.5"
+  channel: stable
+  checksums:
+    x86_64: ""
+    aarch64: ""
+
+guix:
+  channels: guix/channels.scm
+
+platforms:
+  linux:
+    manifest: guix/linux.scm
+    env:
+      CC: clang
+      CXX: clang++
+    preserve:
+      - DISPLAY
+      - WAYLAND_DISPLAY
+      - XAUTHORITY
+      - XDG_RUNTIME_DIR
+      - XDG_SESSION_TYPE
+      - DBUS_SESSION_BUS_ADDRESS
+    build:
+      command: flutter build linux --release
+      output: build/linux/x64/release/bundle
