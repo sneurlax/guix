@@ -1,0 +1,9 @@
+name: guix_workspace
+description: Melos monorepo for guix Dart/Flutter packages.
+publish_to: 'none'
+
+environment:
+  sdk: ^3.5.0
+
+dev_dependencies:
+  melos: ^6.3.2
