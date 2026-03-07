@@ -34,7 +34,7 @@ class GuixCommandRunner extends CommandRunner<int> {
   Future<int?> run(Iterable<String> args) async {
     final results = parse(args);
     if (results['version'] == true) {
-      print('guix_dart 0.1.0');
+      print('guix_dart 0.0.1');
       return 0;
     }
     return await runCommand(results);
