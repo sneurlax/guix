@@ -12,7 +12,7 @@ Reproducible Flutter builds using GNU Guix.  Usable via CLI tool, subtree, or ex
 ## Prerequisites
 - [GNU Guix](https://guix.gnu.org/) (as a package manager on any Linux distro, or Guix System)
 - Git
-- An existing Flutter project (or use the `example`)
+- An existing Flutter project (or use `apps/example`)
 
 ## Getting Started
 guix_dart_ works three ways:
@@ -74,16 +74,16 @@ make guix-build-android
 ```
 
 ## Example app
-There is a small reference app in [`example`](example).
+There is a small reference app in [`apps/example`](apps/example).
 It is a minimal Flutter Linux app with pinned Guix files and a checked-in 
 expected bundle hash.  Its README shows the same package used a few different 
 ways: from a repo checkout, through the installed CLI, as a git subtree, and as 
 standalone scripts.
 
 ```sh
-cd example
-dart run ../packages/guix/bin/guix_dart.dart setup linux
-dart run ../packages/guix/bin/guix_dart.dart build linux
+cd apps/example
+dart run ../../packages/guix/bin/guix_dart.dart setup linux
+dart run ../../packages/guix/bin/guix_dart.dart build linux
 ./tool/hash_linux_bundle.sh --check
 ```
 
@@ -93,7 +93,7 @@ The normalized Linux release bundle should hash to:
 6ff79e75e7fdb074f73bfa7c13095db2b6c4b92bdd25b0928d7303b618594d0a
 ```
 
-If you already have a Flutter project, copy the example's `guix.yaml`, `guix/`,
+If you already have a Flutter project, copy the example's `guix.yaml`, `guix/`, 
 and `tool/hash_linux_bundle.sh`.
 
 ## Updating

@@ -10,8 +10,8 @@ hash, so you can build it and see what a known-good result looks like.
 Run these commands from this directory:
 
 ```sh
-dart run ../packages/guix/bin/guix_dart.dart setup linux
-dart run ../packages/guix/bin/guix_dart.dart build linux
+dart run ../../packages/guix/bin/guix_dart.dart setup linux
+dart run ../../packages/guix/bin/guix_dart.dart build linux
 ./tool/hash_linux_bundle.sh --check
 ```
 
@@ -38,8 +38,8 @@ This is the path shown above. It is handy when you are working in a clone or
 fork of this repository and do not want to install anything globally.
 
 ```sh
-dart run ../packages/guix/bin/guix_dart.dart setup linux
-dart run ../packages/guix/bin/guix_dart.dart build linux
+dart run ../../packages/guix/bin/guix_dart.dart setup linux
+dart run ../../packages/guix/bin/guix_dart.dart build linux
 ./tool/hash_linux_bundle.sh --check
 ```
 
@@ -127,7 +127,7 @@ If you start from this example, or any other `guix.yaml` project, and later
 want standalone scripts, use `eject` once:
 
 ```sh
-dart run ../packages/guix/bin/guix_dart.dart eject
+dart run ../../packages/guix/bin/guix_dart.dart eject
 ./scripts/fetch-flutter.sh
 make -f Makefile.generated build-linux
 ./tool/hash_linux_bundle.sh

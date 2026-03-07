@@ -3,6 +3,7 @@ repository: https://github.com/ManyMath/guix
 
 packages:
   - packages/*
+  - apps/*
 
 command:
   bootstrap:

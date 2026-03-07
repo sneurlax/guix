@@ -1,6 +1,6 @@
 .PHONY: guix-setup guix-build hash-linux verify-linux
 
-GUIX_DART = dart run ../packages/guix/bin/guix_dart.dart
+GUIX_DART = dart run ../../packages/guix/bin/guix_dart.dart
 
 guix-setup:
 	$(GUIX_DART) setup linux
