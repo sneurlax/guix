@@ -15,11 +15,6 @@ class SetupCommand extends Command<int> {
   @override
   final String description = 'Fetch Flutter SDK and platform-specific SDKs.';
 
-  SetupCommand() {
-    argParser
-      ..addFlag('pinned', abbr: 'p', help: 'Use pinned Guix channels for SDK fetch environment');
-  }
-
   @override
   Future<int> run() async {
     final config = GuixConfig.load();
