@@ -1,6 +1,10 @@
+# Melos
+pubspec_overrides.yaml
+
 # Flutter
 .dart_tool/
 .packages
+pubspec.lock
 build/
 *.iml
 .metadata
