@@ -4,7 +4,7 @@ pubspec_overrides.yaml
 # Flutter
 .dart_tool/
 .packages
-pubspec.lock
+/pubspec.lock
 build/
 *.iml
 .metadata
